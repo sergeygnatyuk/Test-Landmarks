@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A999DCF26869DDD0029306C /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A999DCE26869DDD0029306C /* SnapKit.xcframework */; };
+		4A999DD026869DDD0029306C /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A999DCE26869DDD0029306C /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD4867B2684D5F9005295C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867A2684D5F9005295C3 /* AppDelegate.swift */; };
 		4AD4867D2684D5F9005295C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867C2684D5F9005295C3 /* SceneDelegate.swift */; };
 		4AD4867F2684D5F9005295C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867E2684D5F9005295C3 /* ViewController.swift */; };
@@ -16,7 +18,23 @@
 		4AD486912684D71C005295C3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4AD486902684D71C005295C3 /* .gitignore */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4A999DD126869DDD0029306C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4A999DD026869DDD0029306C /* SnapKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4A15DEE6268690650093E7E3 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		4A999DCE26869DDD0029306C /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 		4AD486772684D5F9005295C3 /* LandmarksTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarksTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD4867A2684D5F9005295C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AD4867C2684D5F9005295C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,18 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A999DCF26869DDD0029306C /* SnapKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A15DEE5268690650093E7E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A999DCE26869DDD0029306C /* SnapKit.xcframework */,
+				4A15DEE6268690650093E7E3 /* SnapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4AD4866E2684D5F9005295C3 = {
 			isa = PBXGroup;
 			children = (
 				4AD486902684D71C005295C3 /* .gitignore */,
 				4AD486792684D5F9005295C3 /* LandmarksTest */,
 				4AD486782684D5F9005295C3 /* Products */,
+				4A15DEE5268690650093E7E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +109,7 @@
 				4AD486732684D5F9005295C3 /* Sources */,
 				4AD486742684D5F9005295C3 /* Frameworks */,
 				4AD486752684D5F9005295C3 /* Resources */,
+				4A999DD126869DDD0029306C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,6 +322,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N5DQ465SS7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LandmarksTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +346,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N5DQ465SS7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LandmarksTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
