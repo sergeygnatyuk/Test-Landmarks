@@ -1,5 +1,5 @@
-import Foundation
+import UIKit
 
 protocol ILandmarksView: AnyObject {
-    func updateUI(with viewModel: LandMarksViewController.Model) 
+    func updateUI(with viewModel: LandmarksViewController.Model) 
 }

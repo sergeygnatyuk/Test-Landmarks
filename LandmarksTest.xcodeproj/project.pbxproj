@@ -21,10 +21,14 @@
 		4A999DE62686A1EC0029306C /* ILandmarksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A999DE52686A1EC0029306C /* ILandmarksPresenter.swift */; };
 		4A999DE82686A2490029306C /* ILandmarksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A999DE72686A2490029306C /* ILandmarksRouter.swift */; };
 		4A999DEA2686A2850029306C /* ILandmarksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A999DE92686A2850029306C /* ILandmarksInteractor.swift */; };
+		4AA7C08726888ED3007A7FCC /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7C08626888ED3007A7FCC /* LandmarksView.swift */; };
+		4AC8D04926889B1500C9FBDA /* LandmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8D04826889B1500C9FBDA /* LandmarksCell.swift */; };
+		4AC8D04B2688DF9600C9FBDA /* LandmarksViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8D04A2688DF9600C9FBDA /* LandmarksViewController+TableView.swift */; };
+		4AC8D04E268903BC00C9FBDA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8D04D268903BC00C9FBDA /* UIColor.swift */; };
+		4AC8D0502689055A00C9FBDA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8D04F2689055A00C9FBDA /* Color.swift */; };
 		4AD4867B2684D5F9005295C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867A2684D5F9005295C3 /* AppDelegate.swift */; };
 		4AD4867D2684D5F9005295C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867C2684D5F9005295C3 /* SceneDelegate.swift */; };
-		4AD4867F2684D5F9005295C3 /* LandMarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867E2684D5F9005295C3 /* LandMarksViewController.swift */; };
-		4AD486822684D5F9005295C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD486802684D5F9005295C3 /* Main.storyboard */; };
+		4AD4867F2684D5F9005295C3 /* LandmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4867E2684D5F9005295C3 /* LandmarksViewController.swift */; };
 		4AD486842684D5FB005295C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD486832684D5FB005295C3 /* Assets.xcassets */; };
 		4AD486872684D5FB005295C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD486852684D5FB005295C3 /* LaunchScreen.storyboard */; };
 		4AD486912684D71C005295C3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4AD486902684D71C005295C3 /* .gitignore */; };
@@ -59,11 +63,15 @@
 		4A999DE52686A1EC0029306C /* ILandmarksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILandmarksPresenter.swift; sourceTree = "<group>"; };
 		4A999DE72686A2490029306C /* ILandmarksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILandmarksRouter.swift; sourceTree = "<group>"; };
 		4A999DE92686A2850029306C /* ILandmarksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILandmarksInteractor.swift; sourceTree = "<group>"; };
+		4AA7C08626888ED3007A7FCC /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
+		4AC8D04826889B1500C9FBDA /* LandmarksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksCell.swift; sourceTree = "<group>"; };
+		4AC8D04A2688DF9600C9FBDA /* LandmarksViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LandmarksViewController+TableView.swift"; sourceTree = "<group>"; };
+		4AC8D04D268903BC00C9FBDA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		4AC8D04F2689055A00C9FBDA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4AD486772684D5F9005295C3 /* LandmarksTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarksTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD4867A2684D5F9005295C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AD4867C2684D5F9005295C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4AD4867E2684D5F9005295C3 /* LandMarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarksViewController.swift; sourceTree = "<group>"; };
-		4AD486812684D5F9005295C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4AD4867E2684D5F9005295C3 /* LandmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksViewController.swift; sourceTree = "<group>"; };
 		4AD486832684D5FB005295C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AD486862684D5FB005295C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AD486882684D5FB005295C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				4A16E2E3268783E10026A106 /* Location.swift */,
+				4AC8D04F2689055A00C9FBDA /* Color.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -102,8 +111,9 @@
 		4A999DD326869FB60029306C /* ViewConrollers */ = {
 			isa = PBXGroup;
 			children = (
-				4AD4867E2684D5F9005295C3 /* LandMarksViewController.swift */,
+				4AD4867E2684D5F9005295C3 /* LandmarksViewController.swift */,
 				4A16E2DE2686A5FE0026A106 /* ILandmarksView.swift */,
+				4AC8D04A2688DF9600C9FBDA /* LandmarksViewController+TableView.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -130,7 +140,6 @@
 		4A999DD62686A0010029306C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4AD486802684D5F9005295C3 /* Main.storyboard */,
 				4AD486852684D5FB005295C3 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -172,6 +181,30 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
+		4AA7C08526888EB5007A7FCC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AA7C08626888ED3007A7FCC /* LandmarksView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AC8D04726889AEB00C9FBDA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4AC8D04826889B1500C9FBDA /* LandmarksCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4AC8D04C268903AD00C9FBDA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4AC8D04D268903BC00C9FBDA /* UIColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4AD4866E2684D5F9005295C3 = {
 			isa = PBXGroup;
 			children = (
@@ -193,12 +226,15 @@
 		4AD486792684D5F9005295C3 /* LandmarksTest */ = {
 			isa = PBXGroup;
 			children = (
+				4AC8D04C268903AD00C9FBDA /* Extension */,
 				4A999DE32686A1280029306C /* LandmarksAssembly .swift */,
+				4AC8D04726889AEB00C9FBDA /* Cell */,
+				4AA7C08526888EB5007A7FCC /* View */,
+				4A999DD326869FB60029306C /* ViewConrollers */,
 				4A16E2E2268783D40026A106 /* Worker */,
 				4A999DDA2686A03C0029306C /* Provider */,
 				4A999DD92686A0300029306C /* Router */,
 				4A999DD82686A0240029306C /* Presenter  */,
-				4A999DD326869FB60029306C /* ViewConrollers */,
 				4A999DD72686A00F0029306C /* Interactor  */,
 				4A999DD426869FC60029306C /* SupportingFiles */,
 				4A999DD62686A0010029306C /* Storyboards */,
@@ -269,7 +305,6 @@
 				4AD486872684D5FB005295C3 /* LaunchScreen.storyboard in Resources */,
 				4AD486842684D5FB005295C3 /* Assets.xcassets in Resources */,
 				4A16E2E62687858C0026A106 /* landmarkData.json in Resources */,
-				4AD486822684D5F9005295C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,14 +317,19 @@
 			files = (
 				4A16E2DF2686A5FE0026A106 /* ILandmarksView.swift in Sources */,
 				4A999DE42686A1280029306C /* LandmarksAssembly .swift in Sources */,
+				4AA7C08726888ED3007A7FCC /* LandmarksView.swift in Sources */,
 				4A999DE02686A0B90029306C /* LandmarksPresenter.swift in Sources */,
 				4A16E2E12686A7DB0026A106 /* IDataProvider.swift in Sources */,
 				4A999DE62686A1EC0029306C /* ILandmarksPresenter.swift in Sources */,
-				4AD4867F2684D5F9005295C3 /* LandMarksViewController.swift in Sources */,
+				4AD4867F2684D5F9005295C3 /* LandmarksViewController.swift in Sources */,
 				4A16E2E4268783E10026A106 /* Location.swift in Sources */,
 				4A999DEA2686A2850029306C /* ILandmarksInteractor.swift in Sources */,
+				4AC8D04E268903BC00C9FBDA /* UIColor.swift in Sources */,
 				4AD4867B2684D5F9005295C3 /* AppDelegate.swift in Sources */,
+				4AC8D0502689055A00C9FBDA /* Color.swift in Sources */,
+				4AC8D04B2688DF9600C9FBDA /* LandmarksViewController+TableView.swift in Sources */,
 				4A999DDC2686A05F0029306C /* DataProvider.swift in Sources */,
+				4AC8D04926889B1500C9FBDA /* LandmarksCell.swift in Sources */,
 				4A999DE22686A0DD0029306C /* LandmarksInteractor .swift in Sources */,
 				4AD4867D2684D5F9005295C3 /* SceneDelegate.swift in Sources */,
 				4A999DE82686A2490029306C /* ILandmarksRouter.swift in Sources */,
@@ -300,14 +340,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4AD486802684D5F9005295C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4AD486812684D5F9005295C3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4AD486852684D5FB005295C3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
