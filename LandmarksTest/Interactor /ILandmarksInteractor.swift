@@ -1,4 +1,5 @@
 import Foundation
-protocol ILandmarksInteractor: AnyObject {
-    func viewDidLoad()
+protocol ILandmarksInteractor {
+    var presenter: ILandmarksPresenter? { get set }
+    func getUser()
 }

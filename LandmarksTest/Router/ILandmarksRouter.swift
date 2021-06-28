@@ -1,4 +1,6 @@
 import Foundation
-protocol ILandmarksRouter: AnyObject {
-    func showDetailsScreen()
+protocol ILandmarksRouter {
+    var entry: EntryPoint? { get }
+    
+    static func start() -> ILandmarksRouter
 }

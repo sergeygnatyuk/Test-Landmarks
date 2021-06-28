@@ -1,12 +1,18 @@
 import Foundation
 
-final class LandmarksPresenter: ILandmarksPresenter {
-    // Dependencies
-    weak var view: ILandmarksView?
+class LandmarksPresenter: ILandmarksPresenter {
     
-    // MARK: - Public
-    func makeViewModels(with location: Location) {
-        let viewModel = LandMarksViewController.Model.init(nameLabelText: location.name)
-        view?.updateUI(with: viewModel)
+    var router: ILandmarksRouter?
+    
+    var interactor: ILandmarksInteractor?
+    
+    var view: ILandmarksView?
+    
+    init() {
+        interactor?.getUser()
     }
-}
+    
+    func interactorDidFetchUsers(with result: Result<[Landmark], Error>) {
+    }
+    
+    }

@@ -1,4 +1,8 @@
 import Foundation
-protocol ILandmarksPresenter: AnyObject {
-    func makeViewModels(with location: Location)
+protocol ILandmarksPresenter {
+    var router: ILandmarksRouter? { get set }
+    var interactor: ILandmarksInteractor? { get set }
+    var view: ILandmarksView? { get set}
+    func interactorDidFetchUsers(with result: Result<[Landmark], Error>)
 }
+
