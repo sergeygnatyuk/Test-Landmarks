@@ -34,6 +34,7 @@ extension LandmarksViewController: UITableViewDelegate, UITableViewDataSource {
         landmarksCell?.titleLabel.text = landmark.name
         landmarksCell?.accessoryType = .disclosureIndicator
         landmarksCell?.landmarksImageView.image = ImageStore.shared.image(name: landmark.imageName)
+       // landmarksCell?.starLabel
         return landmarksCell ?? UITableViewCell()
     }
 }

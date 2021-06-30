@@ -1,4 +1,3 @@
-
 import UIKit
 import SnapKit
 
@@ -12,19 +11,24 @@ final class LandmarksCell: UITableViewCell {
         return landmarksImageView
     }()
     
-    
-    private lazy var starImageView: UIImageView = {
-        let starImageView = UIImageView()
-        return starImageView
-    }()
-    
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.systemFont(ofSize: 19)
+        titleLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
         titleLabel.adjustsFontSizeToFitWidth = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
+    }()
+    
+    lazy var starLabel: UILabel = {
+        let starImageView = UILabel()
+        var favorite = false
+        titleLabel.numberOfLines = 0
+        titleLabel.text = "⭐️"
+       // titleLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
+        titleLabel.adjustsFontSizeToFitWidth = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return starImageView
     }()
     
     // MARK: - Initialization
@@ -37,23 +41,29 @@ final class LandmarksCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Override
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        landmarksImageView.layer.cornerRadius = landmarksImageView.frame.height / 2
+    }
+    
     // MARK: - Private
     private func setupUICell() {
         addSubview(landmarksImageView)
         addSubview(titleLabel)
-        //        addSubview(starImageView)
+        addSubview(starLabel)
         setupLayout()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        landmarksImageView.layer.cornerRadius = landmarksImageView.frame.height / 2
     }
     
     private func setupLayout() {
         titleLabel.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.leading.equalTo(landmarksImageView).inset(MyConstants.default.rawValue + MyConstants.imageSize.rawValue)
+        }
+        
+        starLabel.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.leading.equalTo(titleLabel).inset(20)
         }
         
         landmarksImageView.snp.makeConstraints { maker in
@@ -67,12 +77,6 @@ final class LandmarksCell: UITableViewCell {
         if isFavorite == true {
             titleLabel.text? += "⭐️"
         }
-    }
-    
-    private enum MyConstants: CGFloat {
-        case `default` = 10
-        case imageSize = 60
-        case imageTrailing = 20
     }
 }
 
