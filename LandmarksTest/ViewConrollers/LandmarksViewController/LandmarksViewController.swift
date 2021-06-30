@@ -3,7 +3,8 @@ import SnapKit
 
 class LandmarksViewController: UIViewController {
     // MARK: - Properties
-    let cellIdentifier = "Cell"
+    let landmarksCellIdentifier = "LandmarksCell"
+    let isFavoriteCellIdentifier = "IsFavoriteCell"
     let titleNavigationController = "Landmarks"
     let data = landmarkData
     var cell: LandmarksCell = {
@@ -44,9 +45,9 @@ class LandmarksViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(LandmarksCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(LandmarksCell.self, forCellReuseIdentifier: landmarksCellIdentifier)
+        tableView.register(IsFavoriteCell.self, forCellReuseIdentifier: isFavoriteCellIdentifier)
         tableView.isHidden = false
-        tableView.rowHeight = 70
         return tableView
     }()
     
