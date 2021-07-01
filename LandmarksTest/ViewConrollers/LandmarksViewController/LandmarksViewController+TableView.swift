@@ -15,11 +15,10 @@ extension LandmarksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-                return 1
-            } else {
-                return landmarkData.count
-            }
-        
+            return 1
+        } else {
+            return landmarkData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -27,6 +26,13 @@ extension LandmarksViewController: UITableViewDelegate, UITableViewDataSource {
             let isFavoriteCell = tableView.dequeueReusableCell(withIdentifier: isFavoriteCellIdentifier, for: indexPath) as? IsFavoriteCell
             isFavoriteCell?.selectionStyle = .none
             isFavoriteCell?.isFavoriteSwitch.tag = indexPath.row
+            isFavoriteCell?.favoritesOn = { isOn in
+                if isOn {
+                    tableView.reloadSections(IndexSet(1...1), with: .automatic)
+                } else {
+                    print("456")
+                }
+            }
             return isFavoriteCell ?? UITableViewCell()
         }
         let landmarksCell = tableView.dequeueReusableCell(withIdentifier: landmarksCellIdentifier, for: indexPath) as? LandmarksCell
@@ -34,7 +40,7 @@ extension LandmarksViewController: UITableViewDelegate, UITableViewDataSource {
         landmarksCell?.titleLabel.text = landmark.name
         landmarksCell?.accessoryType = .disclosureIndicator
         landmarksCell?.landmarksImageView.image = ImageStore.shared.image(name: landmark.imageName)
-       // landmarksCell?.starLabel
+        landmarksCell?.checkIsFavorite(isFavorite: landmark.isFavorite)
         return landmarksCell ?? UITableViewCell()
     }
 }

@@ -7,10 +7,6 @@ class LandmarksViewController: UIViewController {
     let isFavoriteCellIdentifier = "IsFavoriteCell"
     let titleNavigationController = "Landmarks"
     let data = landmarkData
-    var cell: LandmarksCell = {
-        let cell = LandmarksCell()
-        return cell
-    }()
     
     // MARK: - Dependencies
     var selectedLandmark: Landmark?
@@ -29,8 +25,6 @@ class LandmarksViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-    
-    
     
     // MARK: - UI
     private func setupUIElements() {

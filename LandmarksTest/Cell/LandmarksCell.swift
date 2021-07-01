@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class LandmarksCell: UITableViewCell {
+ class LandmarksCell: UITableViewCell {
     // MARK: - UI
     lazy var landmarksImageView: UIImageView = {
         let landmarksImageView = UIImageView()
@@ -22,12 +22,10 @@ final class LandmarksCell: UITableViewCell {
     
     lazy var starLabel: UILabel = {
         let starImageView = UILabel()
-        var favorite = false
-        titleLabel.numberOfLines = 0
-        titleLabel.text = "⭐️"
-       // titleLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
-        titleLabel.adjustsFontSizeToFitWidth = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        starImageView.numberOfLines = 0
+        starImageView.text = "⭐️"
+        starImageView.adjustsFontSizeToFitWidth = false
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
         return starImageView
     }()
     
@@ -47,36 +45,41 @@ final class LandmarksCell: UITableViewCell {
         landmarksImageView.layer.cornerRadius = landmarksImageView.frame.height / 2
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        landmarksImageView.image = nil
+        starLabel.isHidden = true
+    }
+    
     // MARK: - Private
     private func setupUICell() {
-        addSubview(landmarksImageView)
-        addSubview(titleLabel)
-        addSubview(starLabel)
+        contentView.addSubview(landmarksImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(starLabel)
         setupLayout()
     }
     
     private func setupLayout() {
-        titleLabel.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.leading.equalTo(landmarksImageView).inset(MyConstants.default.rawValue + MyConstants.imageSize.rawValue)
-        }
-        
-        starLabel.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.leading.equalTo(titleLabel).inset(20)
-        }
-        
         landmarksImageView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview().inset(MyConstants.imageTrailing.rawValue)
             maker.centerY.equalToSuperview()
             maker.size.equalTo(MyConstants.imageSize.rawValue)
         }
+        
+        titleLabel.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.leading.equalTo(landmarksImageView.snp.trailing).offset(8)
+        }
+        
+        starLabel.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.trailing.greaterThanOrEqualToSuperview().offset(32)
+            maker.leading.equalTo(titleLabel.snp.trailing).offset(2)
+        }
     }
     
-    private func checkIsFavorite(isFavorite: Bool) {
-        if isFavorite == true {
-            titleLabel.text? += "⭐️"
-        }
+    func checkIsFavorite(isFavorite: Bool) {
+        starLabel.isHidden = !isFavorite
     }
 }
 

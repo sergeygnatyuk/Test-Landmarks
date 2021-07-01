@@ -4,14 +4,14 @@ import SnapKit
 final class IsFavoriteCell: UITableViewCell {
     
     // MARK: - Properties
-    let favoriteTextLabel = "Favorites only"
+    public var favoritesOn: ((_ isOn: Bool) -> Void)?
     
     // MARK: - UI
     private lazy var favoriteLabel: UILabel = {
         let favoriteLabel = UILabel()
         favoriteLabel.numberOfLines = 0
         favoriteLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
-        favoriteLabel.text = favoriteTextLabel
+        favoriteLabel.text = "Favorites only"
         favoriteLabel.adjustsFontSizeToFitWidth = false
         favoriteLabel.translatesAutoresizingMaskIntoConstraints = false
         return favoriteLabel
@@ -20,7 +20,7 @@ final class IsFavoriteCell: UITableViewCell {
     lazy var isFavoriteSwitch: UISwitch = {
         let isFavoriteSwitch = UISwitch()
         isFavoriteSwitch.setOn(false, animated: true)
-        isFavoriteSwitch.addTarget(self, action: #selector(isFavoriteSorted), for: .touchUpOutside)
+        isFavoriteSwitch.addTarget(self, action: #selector(isFavoriteSorted), for: .valueChanged)
         return isFavoriteSwitch
     }()
     
@@ -36,7 +36,7 @@ final class IsFavoriteCell: UITableViewCell {
     
     // MARK: - Private
     private func setupUICell() {
-        addSubview(favoriteLabel)
+        contentView.addSubview(favoriteLabel)
         contentView.addSubview(isFavoriteSwitch)
         setupLayout()
     }
@@ -55,8 +55,10 @@ final class IsFavoriteCell: UITableViewCell {
     
     // MARK: - @objc methods
     @objc func isFavoriteSorted() {
-        if isFavoriteSwitch.isOn {
-            
+        if isFavoriteSwitch.isOn == true {
+            favoritesOn?(false)
+        } else {
+            favoritesOn?(true)
         }
     }
 }
