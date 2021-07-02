@@ -7,4 +7,5 @@ enum MyConstants: CGFloat {
     case heightFirstCell = 50
     case heightSecondCell = 70
     case fontSizeLabels = 19
+    case switchTrailing = 20
 }

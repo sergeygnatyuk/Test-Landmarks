@@ -13,7 +13,6 @@ final class IsFavoriteCell: UITableViewCell {
         favoriteLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
         favoriteLabel.text = "Favorites only"
         favoriteLabel.adjustsFontSizeToFitWidth = false
-        favoriteLabel.translatesAutoresizingMaskIntoConstraints = false
         return favoriteLabel
     }()
     
@@ -27,7 +26,7 @@ final class IsFavoriteCell: UITableViewCell {
     // MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUICell()
+        createSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -35,30 +34,30 @@ final class IsFavoriteCell: UITableViewCell {
     }
     
     // MARK: - Private
-    private func setupUICell() {
+    private func createSubviews() {
         contentView.addSubview(favoriteLabel)
         contentView.addSubview(isFavoriteSwitch)
-        setupLayout()
+        setupConstraints()
     }
     
-    private func setupLayout() {
-        favoriteLabel.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.leading.equalToSuperview().inset(MyConstants.imageTrailing.rawValue)
+    private func setupConstraints() {
+        favoriteLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(MyConstants.imageTrailing.rawValue)
         }
         
-        isFavoriteSwitch.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.trailing.equalToSuperview().inset(20)
+        isFavoriteSwitch.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(MyConstants.switchTrailing.rawValue)
         }
     }
     
     // MARK: - @objc methods
     @objc func isFavoriteSorted() {
         if isFavoriteSwitch.isOn == true {
-            favoritesOn?(false)
-        } else {
             favoritesOn?(true)
+        } else {
+            favoritesOn?(false)
         }
     }
 }
