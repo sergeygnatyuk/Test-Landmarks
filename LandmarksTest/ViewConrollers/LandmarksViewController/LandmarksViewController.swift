@@ -7,7 +7,9 @@ class LandmarksViewController: UITableViewController {
     let landmarksCellIdentifier = "LandmarksCell"
     let isFavoriteCellIdentifier = "IsFavoriteCell"
     let titleNavigationController = "Landmarks"
+    let defaultImage = "chilkoottrail"
     var data = landmarkData
+    let detailViewController = DetailLandmarksViewController()
     
     // MARK: - Dependencies
     var selectedLandmark: Landmark?
@@ -19,12 +21,7 @@ class LandmarksViewController: UITableViewController {
         setupTableView()
         title = titleNavigationController
         view.backgroundColor = UIColor().colorFromHex(Color.white.rawValue)
-    }
-    
-    // MARK: - UI
-    private func setupTableView() {
-        tableView.register(LandmarksCell.self, forCellReuseIdentifier: landmarksCellIdentifier)
-        tableView.register(IsFavoriteCell.self, forCellReuseIdentifier: isFavoriteCellIdentifier)
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -54,7 +51,7 @@ extension LandmarksViewController: ILandmarksView {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let isFavoriteCell = tableView.dequeueReusableCell(withIdentifier: isFavoriteCellIdentifier, for: indexPath) as? IsFavoriteCell else {fatalError() }
+            guard let isFavoriteCell = tableView.dequeueReusableCell(withIdentifier: isFavoriteCellIdentifier, for: indexPath) as? IsFavoriteCell else { fatalError() }
             isFavoriteCell.selectionStyle = .none
             isFavoriteCell.isFavoriteSwitch.tag = indexPath.row
             isFavoriteCell.favoritesOn = { isOn in
@@ -77,17 +74,14 @@ extension LandmarksViewController: ILandmarksView {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailViewController = DetailLandmarksViewController()
-        selectedLandmark = data[indexPath.row]
-        detailViewController.detailView.imageView.image = ImageStore.shared.image(name: selectedLandmark?.imageName ?? "chilkoottrail")
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegion(center: selectedLandmark?.locationCoordinate ?? CLLocationCoordinate2D(latitude: 12, longitude: 12), span: span)
-        detailViewController.detailView.mapView.setRegion(region, animated: true)
-        detailViewController.detailView.nameLabel.text = selectedLandmark?.name
-      //  detailViewController.title = selectedLandmark?.name.lowercased()
-        // tableView.deselectRow(at: indexPath, animated: true)
-        // navigationController?.show(detailViewController, sender: nil)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        if indexPath.section == 0 {
+            return
+        } else {
+            selectedLandmark = data[indexPath.row]
+            
+            navigationController?.pushViewController(detailViewController, animated: true)
+            parseData()
+        }
     }
     
     // MARK: - Private
@@ -105,6 +99,23 @@ extension LandmarksViewController: ILandmarksView {
             }
             return data.count
         }
+    }
+    
+    private func setupTableView() {
+        tableView.register(LandmarksCell.self, forCellReuseIdentifier: landmarksCellIdentifier)
+        tableView.register(IsFavoriteCell.self, forCellReuseIdentifier: isFavoriteCellIdentifier)
+    }
+    
+    private func parseData() {
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegion(center: selectedLandmark?.locationCoordinate ?? CLLocationCoordinate2D(latitude: 12, longitude: 12), span: span)
+        detailViewController.detailView.imageView.image = ImageStore.shared.image(name: selectedLandmark?.imageName ?? defaultImage)
+        detailViewController.detailView.checkIsFavorite(isFavorite: selectedLandmark?.isFavorite ?? true)
+        detailViewController.detailView.mapView.setRegion(region, animated: true)
+        detailViewController.detailView.nameLabel.text = selectedLandmark?.name
+        detailViewController.detailView.parkLabel.text = selectedLandmark?.park
+        detailViewController.detailView.stateLabel.text = selectedLandmark?.state
+        detailViewController.title = selectedLandmark?.name
     }
 }
 
