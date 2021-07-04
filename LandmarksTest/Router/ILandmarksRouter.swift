@@ -1,7 +1,6 @@
-import Foundation
+import UIKit
 
 protocol ILandmarksRouter {
-    var entry: EntryPoint? { get }
-    
-    static func start() -> ILandmarksRouter
+    func showDetailsScreen()
+    func start() -> UIViewController
 }

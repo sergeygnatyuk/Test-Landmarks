@@ -1,24 +1,18 @@
 import UIKit
 
-typealias EntryPoint = ILandmarksView & UIViewController
-class LandmarksRouter: ILandmarksRouter {
-    var entry: EntryPoint?
-    
-    static func start() -> ILandmarksRouter {
-        let router = LandmarksRouter()
-        let view: ILandmarksView = LandmarksViewController()
-        var presenter: ILandmarksPresenter = LandmarksPresenter()
-        var interector: ILandmarksInteractor = LandmarksInteractor ()
-        view.presenter = presenter
-        interector.presenter = presenter
-        
-        presenter.router = router
-        presenter.view = view
-        presenter.interactor = interector
-        
-        router.entry = view as? EntryPoint
-        
-        return router
+final class LandmarksRouter: ILandmarksRouter {
+    func start() -> UIViewController {
+        let assembly = LandmarksAssembly()
+        let viewController = assembly.assemble()
+        return viewController
     }
     
+    //MARK: - Dependencies
+    weak var transitionHandler: UIViewController?
+    
+    // MARK: - Public
+   public func showDetailsScreen() {
+        let viewController = DetailLandmarksViewController()
+        transitionHandler?.present(viewController, animated: true)
+    }
 }
