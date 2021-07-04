@@ -1,4 +1,5 @@
 import Foundation
+
 protocol ILandmarksRouter {
     var entry: EntryPoint? { get }
     
