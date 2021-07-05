@@ -1,6 +1,6 @@
 import Foundation
 
-class DetailsLandmarksInteractor : IDetailsLandmarksInteractor {
+class DetailsLandmarksInteractor: IDetailsLandmarksInteractor {
 
     // MARK: - Dependencies
     var presenter: IDetailsLandmarksPresenter
@@ -12,9 +12,9 @@ class DetailsLandmarksInteractor : IDetailsLandmarksInteractor {
     }
     
     // MARK: - Public
-   public func getData() {
-        provider.getDataFromJSON { result in
-            presenter.interactorDidFetchUsers(with: result)
-        }
-    }
+//   public func getData() {
+//        provider.getDataFromJSON { result in
+//            presenter.interactorDidFetchUsers(with: result)
+//        }
+//    }
 }

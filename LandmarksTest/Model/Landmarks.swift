@@ -2,6 +2,7 @@ import CoreLocation
 
 struct Landmarks: Hashable, Codable {
     var name: String
+    var id: Int
     var imageName: String
     fileprivate var coordinates: Coordinates
     var state: String

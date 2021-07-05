@@ -12,7 +12,7 @@ final class LandmarksRouter: ILandmarksRouter {
     
     // MARK: - Public
    public func showDetailsScreen() {
-        let viewController = DetailLandmarksViewController()
+    guard let viewController = DetailLandmarksViewController(coder: NSCoder()) else { return }
         transitionHandler?.present(viewController, animated: true)
     }
 }

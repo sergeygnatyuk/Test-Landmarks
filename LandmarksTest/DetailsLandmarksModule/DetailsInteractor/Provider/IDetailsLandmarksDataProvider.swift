@@ -2,6 +2,6 @@ import Foundation
 
 protocol IDetailsLandmarksDataProvider: AnyObject {
     
-    func getDataFromJSON(completion: ((Result<[Landmarks], Error>) -> Void))
+    func getItems(completion: @escaping (Landmarks?, ErrorType?) -> Void)
 }
 

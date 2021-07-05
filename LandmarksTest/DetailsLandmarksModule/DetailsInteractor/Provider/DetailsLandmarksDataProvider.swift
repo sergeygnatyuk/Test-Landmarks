@@ -1,26 +1,29 @@
-import Foundation
+import UIKit
+import MapKit
 
-final class DetailsLandmarksDataProvider: IDataProvider {
 
-    // MARK: - Public
-   public func getDataFromJSON(completion: ((Result<[Landmarks], Error>) -> Void)) {
-        let data: Data
-        guard let file = Bundle.main.url(forResource: Name.fileName, withExtension: ".json") else {
-            completion(.failure(ErrorType.invalidBundle))
-            fatalError("Couldn't find \(Name.fileName) in main bundle.")
+class DetailsLandmarksDataProvider: IDetailsLandmarksDataProvider {
+    
+    // MARK: - Dependencies
+    var dataStore: Landmarks?
+    let service: DetailedLandmarkService
+
+    init(dataStore: Landmarks, service: DetailedLandmarkService) {
+        self.dataStore = dataStore
+        self.service = service
+    }
+
+    func getItems(completion: @escaping (Landmarks?, ErrorType?) -> Void) {
+        if dataStore?.id != 0 {
+            return completion(self.dataStore, nil)
         }
-        do {
-            data = try Data(contentsOf: file)
-            let decoder = JSONDecoder()
-            let result = try decoder.decode([Landmarks].self, from: data)
-            completion(.success(result))
-        } catch {
-            completion(.failure(ErrorType.parsingError))
+        service.fetchItems { (array, error) in
+            if error != nil {
+                completion(nil, .invalidBundle)
+            } else if let models = array {
+                self.dataStore = models
+                completion(self.dataStore, nil)
+            }
         }
     }
-}
-
-enum ErrorType: Error {
-    case invalidBundle
-    case parsingError
 }

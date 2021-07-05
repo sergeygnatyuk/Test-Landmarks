@@ -1,5 +1,4 @@
 import UIKit
-import MapKit
 
 class LandmarksViewController: UITableViewController {
     
@@ -7,7 +6,7 @@ class LandmarksViewController: UITableViewController {
     let defaultImage = "chilkoottrail"
     var allLandmarks = [Landmarks]()
     var favoriteLandmark = [Landmarks]()
-    let detailViewController = DetailLandmarksViewController()
+    var router = LandmarksRouter()
     var showFavorite = false {
         didSet {
             tableView.reloadSections(IndexSet(1...1), with: .automatic)
@@ -96,8 +95,8 @@ class LandmarksViewController: UITableViewController {
             } else {
                 selectedLandmark = allLandmarks[indexPath.row]
             }
-            navigationController?.pushViewController(detailViewController, animated: true)
-            parseData()
+            router.showDetailsScreen()
+//            navigationController?.pushViewController(detailViewController ?? UIViewController(), animated: true)
         }
     }
     
@@ -105,19 +104,6 @@ class LandmarksViewController: UITableViewController {
     private func setupTableView() {
         tableView.register(LandmarksCell.self, forCellReuseIdentifier: Identifiers.landmarksCellIdentifier)
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: Identifiers.favoriteCellIdentifier)
-    }
-    
-    private func parseData() {
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegion(center: selectedLandmark?.locationCoordinate ?? CLLocationCoordinate2D(latitude: 12, longitude: 12), span: span)
-        detailViewController.detailView.imageView.image = ImageStore.shared.image(name: selectedLandmark?.imageName ?? defaultImage)
-        detailViewController.detailView.checkIsFavorite(isFavorite: selectedLandmark?.isFavorite ?? true)
-        detailViewController.detailView.mapView.setRegion(region, animated: true)
-        detailViewController.detailView.nameLabel.text = selectedLandmark?.name
-        detailViewController.detailView.parkLabel.text = selectedLandmark?.park
-        detailViewController.detailView.stateLabel.text = selectedLandmark?.state
-        detailViewController.title = selectedLandmark?.name
-        
     }
 }
 

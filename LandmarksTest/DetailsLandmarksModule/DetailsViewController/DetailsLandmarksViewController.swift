@@ -5,10 +5,24 @@ class DetailLandmarksViewController: UIViewController {
     // MARK: - Properties
     var landmark: Landmarks?
     let landmarkDetail = [Landmarks]()
+    var state: DetailedLandmark.ViewControllerState
+    let interactor: DetailedLandmarkBusinessLogic
     var detailView: DetailView = {
         let detailView = DetailView()
         return detailView
     }()
+    
+    init(interactor: DetailedLandmarkBusinessLogic, initialState: DetailedLandmark.ViewControllerState = .loading) {
+        self.interactor = interactor
+        self.state = initialState
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   
     
     // MARK: - Lifecycle
     override func loadView() {

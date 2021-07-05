@@ -2,8 +2,7 @@ import UIKit
 
 protocol IDetailsLandmarksView: AnyObject {
     
-    // MARK: - Properties
-    var interactor1: IDetailsLandmarksInteractor { get set }
+    var interactor: IDetailsLandmarksInteractor { get set }
     
     func updateUI(with viewModel: [Landmarks])
     
