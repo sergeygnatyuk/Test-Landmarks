@@ -6,14 +6,12 @@ final class DetailsLandmarksAssembly: Any {
     private lazy var  dataProvider = LandmarksDataProvider()
     
     // MARK: - Public
-    func assemble(with landmark: Landmarks) -> UIViewController {
+   public func assemble(with landmark: Landmarks) -> UIViewController {
         let presenter = DetailsLandmarksPresenter()
-       // let router = LandmarksRouter()
         let interactor = DetailsLandmarksInteractor(presenter: presenter)
         let viewController = DetailLandmarksViewController(interactor: interactor)
         viewController.landmark = landmark
-        presenter.view = viewController as? IDetailsLandmarksView
-      //  router.transitionHandler = viewController
+        presenter.view = viewController
         return viewController
     }
 }

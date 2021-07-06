@@ -11,7 +11,6 @@ final class LandmarksAssembly {
         let interactor = LandmarksInteractor(presenter: presenter, provider: dataProvider)
         let viewController = LandmarksViewController(interactor: interactor)
         presenter.view = viewController
-       
         return viewController
     }
 }

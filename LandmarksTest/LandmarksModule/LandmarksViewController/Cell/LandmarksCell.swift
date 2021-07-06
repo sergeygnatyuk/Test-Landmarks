@@ -13,15 +13,15 @@ final class LandmarksCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.numberOfLines = Int(MyConstants.zero.rawValue)
-        titleLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
+        titleLabel.numberOfLines = Int(Size.zero.rawValue)
+        titleLabel.font = UIFont.systemFont(ofSize: Size.fontSizeLabels.rawValue)
         titleLabel.adjustsFontSizeToFitWidth = false
         return titleLabel
     }()
     
     private lazy var starLabel: UILabel = {
         let starLabel = UILabel()
-        starLabel.numberOfLines = Int(MyConstants.zero.rawValue)
+        starLabel.numberOfLines = Int(Size.zero.rawValue)
         starLabel.text = "⭐️"
         starLabel.adjustsFontSizeToFitWidth = false
         return starLabel
@@ -41,7 +41,7 @@ final class LandmarksCell: UITableViewCell {
     // MARK: - Override
     override func layoutSubviews() {
         super.layoutSubviews()
-        cellImageView.layer.cornerRadius = cellImageView.frame.height / MyConstants.two.rawValue
+        cellImageView.layer.cornerRadius = cellImageView.frame.height / Size.two.rawValue
     }
     
     // MARK: - Private
@@ -53,20 +53,20 @@ final class LandmarksCell: UITableViewCell {
     
     private func setupConstraints() {
         cellImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(MyConstants.imageTrailing.rawValue)
+            make.leading.equalToSuperview().inset(Size.imageTrailing.rawValue)
             make.centerY.equalToSuperview()
-            make.size.equalTo(MyConstants.imageSize.rawValue)
+            make.size.equalTo(Size.imageSize.rawValue)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(cellImageView.snp.trailing).offset(MyConstants.eight.rawValue)
+            make.leading.equalTo(cellImageView.snp.trailing).offset(Size.eight.rawValue)
         }
         
         starLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.greaterThanOrEqualToSuperview().offset(MyConstants.starLabelTrailing.rawValue)
-            make.leading.equalTo(titleLabel.snp.trailing).offset(MyConstants.two.rawValue)
+            make.trailing.greaterThanOrEqualToSuperview().offset(Size.starLabelTrailing.rawValue)
+            make.leading.equalTo(titleLabel.snp.trailing).offset(Size.two.rawValue)
         }
     }
     

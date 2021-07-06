@@ -9,8 +9,8 @@ final class FavoriteCell: UITableViewCell {
     // MARK: - UI
     private lazy var favoriteLabel: UILabel = {
         let favoriteLabel = UILabel()
-        favoriteLabel.numberOfLines = Int(MyConstants.zero.rawValue)
-        favoriteLabel.font = UIFont.systemFont(ofSize: MyConstants.fontSizeLabels.rawValue)
+        favoriteLabel.numberOfLines = Int(Size.zero.rawValue)
+        favoriteLabel.font = UIFont.systemFont(ofSize: Size.fontSizeLabels.rawValue)
         favoriteLabel.text = "Favorites only"
         favoriteLabel.adjustsFontSizeToFitWidth = false
         return favoriteLabel
@@ -43,12 +43,12 @@ final class FavoriteCell: UITableViewCell {
     private func setupConstraints() {
         favoriteLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(MyConstants.imageTrailing.rawValue)
+            make.leading.equalToSuperview().inset(Size.imageTrailing.rawValue)
         }
         
         isFavoriteSwitch.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(MyConstants.switchTrailing.rawValue)
+            make.trailing.equalToSuperview().inset(Size.switchTrailing.rawValue)
         }
     }
     

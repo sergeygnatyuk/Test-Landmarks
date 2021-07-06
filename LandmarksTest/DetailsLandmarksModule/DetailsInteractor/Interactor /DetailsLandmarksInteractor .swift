@@ -1,14 +1,13 @@
 import Foundation
 
-class DetailsLandmarksInteractor: IDetailsLandmarksInteractor {
+final class DetailsLandmarksInteractor: IDetailsLandmarksInteractor {
 
     // MARK: - Dependencies
     var presenter: IDetailsLandmarksPresenter
-   // var provider: IDetailsLandmarksDataProvider
     
+    // MARK: - Initialization
     init(presenter: IDetailsLandmarksPresenter) {
         self.presenter = presenter
-      //  self.provider = provider
     }
     
     // MARK: - Public

@@ -1,10 +1,3 @@
-//
-//  DetailedLandmarkViewModel.swift
-//  LandmarksTest
-//
-//  Created by Гнатюк Сергей on 06.07.2021.
-//
-
 import UIKit
 import MapKit
 

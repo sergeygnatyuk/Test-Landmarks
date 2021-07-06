@@ -23,32 +23,32 @@ final class DetailView: UIView {
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.numberOfLines = Int(MyConstants.zero.rawValue)
-        nameLabel.font = UIFont.systemFont(ofSize: MyConstants.fontNameLabel.rawValue)
+        nameLabel.numberOfLines = Int(Size.zero.rawValue)
+        nameLabel.font = UIFont.systemFont(ofSize: Size.fontNameLabel.rawValue)
         nameLabel.adjustsFontSizeToFitWidth = false
         return nameLabel
     }()
     
     lazy var parkLabel: UILabel = {
         let parkLabel = UILabel()
-        parkLabel.numberOfLines = Int(MyConstants.zero.rawValue)
-        parkLabel.font = UIFont.systemFont(ofSize: MyConstants.fontParkLabel.rawValue)
+        parkLabel.numberOfLines = Int(Size.zero.rawValue)
+        parkLabel.font = UIFont.systemFont(ofSize: Size.fontParkLabel.rawValue)
         parkLabel.adjustsFontSizeToFitWidth = false
         return parkLabel
     }()
     
     lazy var stateLabel: UILabel = {
         let stateLabel = UILabel()
-        stateLabel.numberOfLines = Int(MyConstants.zero.rawValue)
+        stateLabel.numberOfLines = Int(Size.zero.rawValue)
         stateLabel.text = "Favorites only"
-        stateLabel.font = UIFont.systemFont(ofSize: MyConstants.fontStateLabel.rawValue)
+        stateLabel.font = UIFont.systemFont(ofSize: Size.fontStateLabel.rawValue)
         stateLabel.adjustsFontSizeToFitWidth = false
         return stateLabel
     }()
     
     lazy var starLabel: UILabel = {
         let starLabel = UILabel()
-        starLabel.numberOfLines = Int(MyConstants.zero.rawValue)
+        starLabel.numberOfLines = Int(Size.zero.rawValue)
         starLabel.text = "⭐️"
         starLabel.adjustsFontSizeToFitWidth = false
         return starLabel
@@ -60,14 +60,14 @@ final class DetailView: UIView {
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor().colorFromHex(Colors.white.rawValue).cgColor
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = MyConstants.three.rawValue
+        imageView.layer.borderWidth = Size.three.rawValue
         return imageView
     }()
     
     // MARK: - Override
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.applyShadowWithCorner(containerView: shadowView, cornerRadious: shadowView.frame.height / MyConstants.two.rawValue)
+        imageView.applyShadowWithCorner(containerView: shadowView, cornerRadious: shadowView.frame.height / Size.two.rawValue)
     }
     
     // MARK: - Public
@@ -84,43 +84,43 @@ final class DetailView: UIView {
     public func setupConstraints() {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.width.equalTo(MyConstants.mapViewWidth.rawValue)
-            make.height.equalTo(MyConstants.mapViewHeight.rawValue)
+            make.width.equalTo(Size.mapViewWidth.rawValue)
+            make.height.equalTo(Size.mapViewHeight.rawValue)
         }
         
         shadowView.snp.makeConstraints { make in
-            make.size.equalTo(MyConstants.shadowViewSize.rawValue)
+            make.size.equalTo(Size.shadowViewSize.rawValue)
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(MyConstants.mapViewHeight.rawValue)
+            make.centerY.equalTo(Size.mapViewHeight.rawValue)
         }
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(shadowView.snp.bottom).offset(10)
-            make.leading.equalTo(MyConstants.nameLabelLeading.rawValue)
+            make.leading.equalTo(Size.nameLabelLeading.rawValue)
         }
         
         parkLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(MyConstants.one.rawValue)
-            make.leading.equalTo(MyConstants.nameLabelLeading.rawValue)
-            make.width.equalTo(MyConstants.shadowViewSize.rawValue)
+            make.top.equalTo(nameLabel.snp.bottom).offset(Size.one.rawValue)
+            make.leading.equalTo(Size.nameLabelLeading.rawValue)
+            make.width.equalTo(Size.shadowViewSize.rawValue)
         }
         
         stateLabel.snp.makeConstraints { make in
-            make.top.equalTo(shadowView.snp.bottom).offset(MyConstants.starLabelTop.rawValue)
-            make.centerY.equalTo(nameLabel).offset(MyConstants.stateLabelCenterY.rawValue)
-            make.trailing.equalTo(MyConstants.zero.rawValue).inset(MyConstants.nameLabelLeading.rawValue)
+            make.top.equalTo(shadowView.snp.bottom).offset(Size.starLabelTop.rawValue)
+            make.centerY.equalTo(nameLabel).offset(Size.stateLabelCenterY.rawValue)
+            make.trailing.equalTo(Size.zero.rawValue).inset(Size.nameLabelLeading.rawValue)
         }
         
         starLabel.snp.makeConstraints { make in
             make.centerY.equalTo(nameLabel)
-            make.trailing.greaterThanOrEqualToSuperview().offset(MyConstants.starLabelTrailing.rawValue)
-            make.leading.equalTo(nameLabel.snp.trailing).offset(MyConstants.four.rawValue)
+            make.trailing.greaterThanOrEqualToSuperview().offset(Size.starLabelTrailing.rawValue)
+            make.leading.equalTo(nameLabel.snp.trailing).offset(Size.four.rawValue)
         }
         
         imageView.snp.makeConstraints { make in
-            make.size.equalTo(MyConstants.shadowViewSize.rawValue)
+            make.size.equalTo(Size.shadowViewSize.rawValue)
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(MyConstants.mapViewHeight.rawValue)
+            make.centerY.equalTo(Size.mapViewHeight.rawValue)
         }
     }
     

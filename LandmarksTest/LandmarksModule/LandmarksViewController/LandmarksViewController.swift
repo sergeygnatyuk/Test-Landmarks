@@ -3,7 +3,6 @@ import UIKit
 class LandmarksViewController: UITableViewController {
     
     // MARK: - Properties
-    let defaultImage = "chilkoottrail"
     var allLandmarks = [Landmarks]()
     var favoriteLandmark = [Landmarks]()
     var router = LandmarksRouter()
@@ -79,13 +78,11 @@ class LandmarksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return MyConstants.heightFirstCell.rawValue
+            return Size.heightFirstCell.rawValue
         } else {
-            return MyConstants.heightSecondCell.rawValue
+            return Size.heightSecondCell.rawValue
         }
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
@@ -97,7 +94,6 @@ class LandmarksViewController: UITableViewController {
                 selectedLandmark = allLandmarks[indexPath.row]
             }
             router.showDetailsScreen(for: selectedLandmark!)
-//            navigationController?.pushViewController(detailViewController ?? UIViewController(), animated: true)
         }
     }
     

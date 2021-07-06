@@ -2,8 +2,9 @@ import Foundation
 
 protocol ILandmarksInteractor {
     
-    // MARK: - Propertyes
+    // MARK: - Properties
     var presenter: ILandmarksPresenter { get set }
     
+    // MARK: - Methods
     func getData()
 }

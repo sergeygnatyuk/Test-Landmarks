@@ -2,6 +2,6 @@ import Foundation
 
 protocol IDetailsLandmarksDataProvider: AnyObject {
     
-    func getItems(completion: @escaping ((Result<Landmarks, ErrorType>) -> Void))
+    // MARK: - Methods
+    func parseData(state: Landmarks, controller: DetailLandmarksViewController)
 }
-

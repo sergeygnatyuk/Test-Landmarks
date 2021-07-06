@@ -1,6 +1,6 @@
 import UIKit
 
-enum MyConstants: CGFloat {
+enum Size: CGFloat {
     case zero = 0
     case one = 1
     case two = 2
