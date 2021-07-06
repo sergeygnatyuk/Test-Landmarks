@@ -1,4 +1,5 @@
 import Foundation
+
 protocol DetailedLandmarkServiceProtocol {
     func fetchItems(completion: @escaping (Landmarks?, Error?) -> Void)
 }

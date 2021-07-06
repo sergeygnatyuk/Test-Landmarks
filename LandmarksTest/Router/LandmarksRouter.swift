@@ -8,11 +8,13 @@ final class LandmarksRouter: ILandmarksRouter {
     }
     
     //MARK: - Dependencies
-    weak var transitionHandler: UIViewController?
+    weak var transitionHandler: UINavigationController?
     
     // MARK: - Public
-   public func showDetailsScreen() {
-    guard let viewController = DetailLandmarksViewController(coder: NSCoder()) else { return }
-        transitionHandler?.present(viewController, animated: true)
+    public func showDetailsScreen(for landmark: Landmarks) {
+    let vc = DetailsLandmarksAssembly().assemble(with: landmark)
+    transitionHandler?.pushViewController(vc, animated: true)
+//    guard let viewController = DetailLandmarksViewController(coder: NSCoder()) else { return }
+//        transitionHandler?.present(viewController, animated: true)
     }
 }

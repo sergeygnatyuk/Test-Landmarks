@@ -4,17 +4,15 @@ class DetailsLandmarksInteractor: IDetailsLandmarksInteractor {
 
     // MARK: - Dependencies
     var presenter: IDetailsLandmarksPresenter
-    var provider: IDetailsLandmarksDataProvider
+   // var provider: IDetailsLandmarksDataProvider
     
-    init(presenter: IDetailsLandmarksPresenter, provider: IDetailsLandmarksDataProvider) {
+    init(presenter: IDetailsLandmarksPresenter) {
         self.presenter = presenter
-        self.provider = provider
+      //  self.provider = provider
     }
     
     // MARK: - Public
-//   public func getData() {
-//        provider.getDataFromJSON { result in
-//            presenter.interactorDidFetchUsers(with: result)
-//        }
-//    }
+    public func getData(forLandmark: Landmarks) {
+        presenter.prepareViewModel(for: forLandmark)
+    }
 }

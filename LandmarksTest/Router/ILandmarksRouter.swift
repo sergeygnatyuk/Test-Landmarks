@@ -1,6 +1,6 @@
 import UIKit
 
 protocol ILandmarksRouter {
-    func showDetailsScreen()
+    func showDetailsScreen(for landmark: Landmarks)
     func start() -> UIViewController
 }

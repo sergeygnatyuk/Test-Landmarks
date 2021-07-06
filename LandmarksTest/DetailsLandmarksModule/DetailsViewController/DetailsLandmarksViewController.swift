@@ -5,16 +5,14 @@ class DetailLandmarksViewController: UIViewController {
     // MARK: - Properties
     var landmark: Landmarks?
     let landmarkDetail = [Landmarks]()
-    var state: DetailedLandmark.ViewControllerState
-    let interactor: DetailedLandmarkBusinessLogic
+    var interactor: IDetailsLandmarksInteractor
     var detailView: DetailView = {
         let detailView = DetailView()
         return detailView
     }()
     
-    init(interactor: DetailedLandmarkBusinessLogic, initialState: DetailedLandmark.ViewControllerState = .loading) {
+    init(interactor: IDetailsLandmarksInteractor) {
         self.interactor = interactor
-        self.state = initialState
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,15 +30,37 @@ class DetailLandmarksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.getData(forLandmark: landmark!)
         view.backgroundColor = UIColor().colorFromHex(Colors.white.rawValue)
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
         detailView.addSubviews()
         detailView.setupConstraints()
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         detailView.imageView.layer.cornerRadius = detailView.imageView.frame.height / MyConstants.two.rawValue
     }
+}
+
+extension DetailLandmarksViewController: IDetailsLandmarksView {
+
+    
+    func updateUI(with viewModel: DetailedLandmarkViewModel) {
+        detailView.imageView.image = viewModel.image
+        detailView.checkIsFavorite(isFavorite: viewModel.isFavourite)
+        detailView.mapView.setRegion(viewModel.region, animated: true)
+        detailView.nameLabel.text = viewModel.name
+        detailView.parkLabel.text = viewModel.parkName
+        detailView.stateLabel.text = viewModel.state
+        title = viewModel.name
+    }
+    
+    func update(with error: String) {
+        
+    }
+    
+    
 }

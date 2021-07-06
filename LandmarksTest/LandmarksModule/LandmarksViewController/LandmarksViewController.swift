@@ -31,6 +31,7 @@ class LandmarksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.getData()
+        router.transitionHandler = self.navigationController
         setupTableView()
         title = "Landmarks"
         tableView.tableFooterView = UIView()
@@ -95,7 +96,7 @@ class LandmarksViewController: UITableViewController {
             } else {
                 selectedLandmark = allLandmarks[indexPath.row]
             }
-            router.showDetailsScreen()
+            router.showDetailsScreen(for: selectedLandmark!)
 //            navigationController?.pushViewController(detailViewController ?? UIViewController(), animated: true)
         }
     }

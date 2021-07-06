@@ -127,17 +127,4 @@ final class DetailView: UIView {
     public func checkIsFavorite(isFavorite: Bool) {
         starLabel.isHidden = !isFavorite
     }
-    
-    func parseData(state: Landmarks, controller: DetailLandmarksViewController) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegion(center: state.locationCoordinate , span: span)
-        imageView.image = ImageStore.shared.image(name: state.imageName)
-        checkIsFavorite(isFavorite: state.isFavorite )
-        mapView.setRegion(region, animated: true)
-        nameLabel.text = state.name
-        parkLabel.text = state.park
-        stateLabel.text = state.state
-        controller.title = state.name
-    }
-    
 }
