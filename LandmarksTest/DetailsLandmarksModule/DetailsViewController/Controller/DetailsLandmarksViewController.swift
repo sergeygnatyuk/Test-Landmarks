@@ -29,7 +29,8 @@ final class DetailLandmarksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.getData(forLandmark: landmark!)
+        guard let selected = landmark else { return }
+        interactor.getData(forLandmark: selected)
         view.backgroundColor = UIColor().colorFromHex(Colors.white.rawValue)
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true

@@ -88,12 +88,14 @@ class LandmarksViewController: UITableViewController {
         if indexPath.section == 0 {
             return
         } else {
+            
             if showFavorite {
                 selectedLandmark = favoriteLandmark[indexPath.row]
             } else {
                 selectedLandmark = allLandmarks[indexPath.row]
             }
-            router.showDetailsScreen(for: selectedLandmark!)
+            guard let selected = selectedLandmark else { return }
+            router.showDetailsScreen(for: selected)
         }
     }
     
