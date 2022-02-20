@@ -16,10 +16,7 @@ final class DetailView: UIView {
         return mapView
     }()
     
-    lazy var shadowView: UIView = {
-        let shadowView = UIView()
-        return shadowView
-    }()
+    lazy var shadowView = UIView()
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()

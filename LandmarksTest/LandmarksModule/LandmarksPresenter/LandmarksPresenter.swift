@@ -4,10 +4,7 @@ final class LandmarksPresenter: ILandmarksPresenter {
     
     // MARK: - Properties
     var view: ILandmarksView?
-    
-    init() {
-    }
-    
+
     // MARK: - Public
     public func interactorDidFetchUsers(with result: Result<[Landmarks], Error>) {
         switch result {
