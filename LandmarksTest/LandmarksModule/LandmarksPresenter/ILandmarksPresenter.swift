@@ -6,6 +6,6 @@ protocol ILandmarksPresenter {
     var view: ILandmarksView? { get set }
     
     // MARK: - Methods
-    func interactorDidFetchUsers(with result: Result<[Landmarks], Error>)
+    func interactorDidFetchUsers(with result: Result<[LandmarksModel], Error>)
 }
 

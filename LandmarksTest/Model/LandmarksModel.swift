@@ -1,6 +1,6 @@
 import CoreLocation
 
-struct Landmarks: Hashable, Codable {
+struct LandmarksModel: Hashable, Codable {
     var name: String
     var id: Int
     var imageName: String

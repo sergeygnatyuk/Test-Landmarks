@@ -3,6 +3,6 @@ import Foundation
 protocol ILandmarksDataProvider: AnyObject {
     
     // MARK: - Methods
-    func getDataFromJSON(completion: ((Result<[Landmarks], Error>) -> Void))
+    func getDataFromJSON(completion: ((Result<[LandmarksModel], Error>) -> Void))
 }
 

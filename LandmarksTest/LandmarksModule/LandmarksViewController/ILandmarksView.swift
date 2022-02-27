@@ -6,7 +6,7 @@ protocol ILandmarksView: AnyObject {
     var interactor: ILandmarksInteractor { get set }
     
     // MARK: - Methods
-    func updateUI(with viewModel: [Landmarks])
+    func updateUI(with viewModel: [LandmarksModel])
     
     func update(with error: String)
 }

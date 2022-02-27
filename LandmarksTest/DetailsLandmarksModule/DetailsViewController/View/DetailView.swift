@@ -2,73 +2,104 @@ import UIKit
 import SnapKit
 import MapKit
 
+fileprivate extension Appearance {
+	var stateText: String { "Favorites only" }
+	var starText: String { "⭐️" }
+
+	var imageBorderWidth: CGFloat { 3 }
+	var halfHeight: CGFloat { 2 }
+	var mapHeight: CGFloat { 370 }
+	var imageSize: CGFloat { 260 }
+	var nameTop: CGFloat { 10 }
+	var nameLeading: CGFloat { 13 }
+	var starLeading: CGFloat { 4 }
+	var parkTrailing: CGFloat { 70 }
+	var stateTrailing: CGFloat { 15 }
+
+	var nameLabelFont: UIFont { .systemFont(ofSize: 28) }
+	var parkLabelFont: UIFont { .systemFont(ofSize: 17) }
+	var stateLabelFont: UIFont { .systemFont(ofSize: 15) }
+}
+
 final class DetailView: UIView {
-    
-    // MARK: - Properties
-    var landmark: Landmarks?
+
+	private let appearance = Appearance()
     
     // MARK: - UI
-    lazy var mapView: MKMapView = {
+	let mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
         return mapView
     }()
     
-    lazy var shadowView = UIView()
+	private let shadowView = UIView()
     
-    lazy var nameLabel: UILabel = {
+	lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.numberOfLines = Int(Size.zero.rawValue)
-        nameLabel.font = UIFont.systemFont(ofSize: Size.fontNameLabel.rawValue)
+        nameLabel.numberOfLines = 0
+		nameLabel.font = appearance.nameLabelFont
         nameLabel.adjustsFontSizeToFitWidth = false
         return nameLabel
     }()
     
-    lazy var parkLabel: UILabel = {
+	lazy var parkLabel: UILabel = {
         let parkLabel = UILabel()
-        parkLabel.numberOfLines = Int(Size.zero.rawValue)
-        parkLabel.font = UIFont.systemFont(ofSize: Size.fontParkLabel.rawValue)
+        parkLabel.numberOfLines = 0
+		parkLabel.font = appearance.parkLabelFont
         parkLabel.adjustsFontSizeToFitWidth = false
         return parkLabel
     }()
     
-    lazy var stateLabel: UILabel = {
+	lazy var stateLabel: UILabel = {
         let stateLabel = UILabel()
-        stateLabel.numberOfLines = Int(Size.zero.rawValue)
-        stateLabel.text = "Favorites only"
-        stateLabel.font = UIFont.systemFont(ofSize: Size.fontStateLabel.rawValue)
+        stateLabel.numberOfLines = 0
+		stateLabel.text = appearance.stateText
+		stateLabel.font = appearance.stateLabelFont
         stateLabel.adjustsFontSizeToFitWidth = false
         return stateLabel
     }()
     
-    lazy var starLabel: UILabel = {
+	lazy var starLabel: UILabel = {
         let starLabel = UILabel()
-        starLabel.numberOfLines = Int(Size.zero.rawValue)
-        starLabel.text = "⭐️"
+        starLabel.numberOfLines = 0
+		starLabel.text = appearance.starText
         starLabel.adjustsFontSizeToFitWidth = false
         return starLabel
     }()
-    
-    
-    lazy var imageView: UIImageView = {
+
+	lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor().colorFromHex(Colors.white.rawValue).cgColor
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = Size.three.rawValue
+		imageView.layer.borderWidth = appearance.imageBorderWidth
         return imageView
     }()
-    
+
+	// MARK: - Initialization
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		configure()
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
     // MARK: - Override
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.applyShadowWithCorner(containerView: shadowView, cornerRadious: shadowView.frame.height / Size.two.rawValue)
+		imageView.applyShadowWithCorner(containerView: shadowView, cornerRadius: shadowView.frame.height / appearance.halfHeight)
+		imageView.layer.cornerRadius = imageView.frame.height / Size.two.rawValue
     }
     
-    // MARK: - Public
-    public func addSubviews() {
+    // MARK: - Internal
+	func checkIsFavorite(isFavorite: Bool) {
+		starLabel.isHidden = !isFavorite
+	}
+
+	// MARK: - Private
+    private func addSubviews() {
         addSubview(mapView)
         addSubview(shadowView)
         addSubview(nameLabel)
@@ -78,50 +109,47 @@ final class DetailView: UIView {
         addSubview(starLabel)
     }
     
-    public func setupConstraints() {
-        mapView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.width.equalTo(Size.mapViewWidth.rawValue)
-            make.height.equalTo(Size.mapViewHeight.rawValue)
+	private func setupConstraints() {
+        mapView.snp.makeConstraints {
+			$0.height.equalTo(appearance.mapHeight)
+			$0.top.leading.trailing.equalToSuperview()
+        }
+
+		imageView.snp.makeConstraints {
+			$0.size.equalTo(appearance.imageSize)
+			$0.centerX.equalToSuperview()
+			$0.centerY.equalTo(appearance.mapHeight)
+		}
+
+        shadowView.snp.makeConstraints {
+			$0.size.equalTo(imageView.snp.size)
+			$0.center.equalTo(imageView.snp.center)
         }
         
-        shadowView.snp.makeConstraints { make in
-            make.size.equalTo(Size.shadowViewSize.rawValue)
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(Size.mapViewHeight.rawValue)
+        nameLabel.snp.makeConstraints {
+			$0.top.equalTo(shadowView.snp.bottom).offset(appearance.nameTop)
+			$0.leading.equalToSuperview().inset(appearance.nameLeading)
+        }
+
+		starLabel.snp.makeConstraints {
+			$0.centerY.equalTo(nameLabel)
+			$0.leading.equalTo(nameLabel.snp.trailing).offset(appearance.starLeading)
+		}
+        
+        parkLabel.snp.makeConstraints {
+			$0.top.equalTo(nameLabel.snp.bottom)
+			$0.leading.equalToSuperview().inset(appearance.nameLeading)
+			$0.trailing.equalToSuperview().inset(appearance.parkTrailing)
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(shadowView.snp.bottom).offset(10)
-            make.leading.equalTo(Size.nameLabelLeading.rawValue)
-        }
-        
-        parkLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(Size.one.rawValue)
-            make.leading.equalTo(Size.nameLabelLeading.rawValue)
-            make.width.equalTo(Size.shadowViewSize.rawValue)
-        }
-        
-        stateLabel.snp.makeConstraints { make in
-            make.top.equalTo(shadowView.snp.bottom).offset(Size.starLabelTop.rawValue)
-            make.centerY.equalTo(nameLabel).offset(Size.stateLabelCenterY.rawValue)
-            make.trailing.equalTo(Size.zero.rawValue).inset(Size.nameLabelLeading.rawValue)
-        }
-        
-        starLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nameLabel)
-            make.trailing.greaterThanOrEqualToSuperview().offset(Size.starLabelTrailing.rawValue)
-            make.leading.equalTo(nameLabel.snp.trailing).offset(Size.four.rawValue)
-        }
-        
-        imageView.snp.makeConstraints { make in
-            make.size.equalTo(Size.shadowViewSize.rawValue)
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(Size.mapViewHeight.rawValue)
+        stateLabel.snp.makeConstraints {
+			$0.top.equalTo(parkLabel.snp.top)
+			$0.trailing.equalToSuperview().inset(appearance.stateTrailing)
         }
     }
-    
-    public func checkIsFavorite(isFavorite: Bool) {
-        starLabel.isHidden = !isFavorite
-    }
+
+	private func configure() {
+		addSubviews()
+		setupConstraints()
+	}
 }

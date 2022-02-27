@@ -3,8 +3,8 @@ import UIKit
 final class DetailLandmarksViewController: UIViewController {
     
     // MARK: - Properties
-    var landmark: Landmarks?
-    let landmarkDetail = [Landmarks]()
+    var landmarkModel: LandmarksModel?
+    let landmarkDetail = [LandmarksModel]()
     var interactor: IDetailsLandmarksInteractor
     var detailView: DetailView = {
         let detailView = DetailView()
@@ -29,19 +29,17 @@ final class DetailLandmarksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let selected = landmark else { return }
+        guard let selected = landmarkModel else { return }
         interactor.getData(forLandmark: selected)
         view.backgroundColor = UIColor().colorFromHex(Colors.white.rawValue)
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
-        detailView.addSubviews()
-        detailView.setupConstraints()
         navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        detailView.imageView.layer.cornerRadius = detailView.imageView.frame.height / Size.two.rawValue
+//        detailView.imageView.layer.cornerRadius = detailView.imageView.frame.height / Size.two.rawValue
     }
 }
 
