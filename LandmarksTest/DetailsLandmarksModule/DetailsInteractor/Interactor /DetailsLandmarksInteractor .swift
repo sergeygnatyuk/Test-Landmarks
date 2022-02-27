@@ -11,7 +11,7 @@ final class DetailsLandmarksInteractor: IDetailsLandmarksInteractor {
     }
     
     // MARK: - Public
-    public func getData(forLandmark: Landmarks) {
+    public func getData(forLandmark: LandmarksModel) {
         presenter.prepareViewModel(for: forLandmark)
     }
 }

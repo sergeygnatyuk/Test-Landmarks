@@ -11,7 +11,7 @@ final class DetailsLandmarksPresenter: IDetailsLandmarksPresenter {
     }
     
     // MARK: - Public
-   public func prepareViewModel(for landmark: Landmarks) {
+   public func prepareViewModel(for landmark: LandmarksModel) {
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: landmark.locationCoordinate , span: span)
         let image = ImageStore.shared.image(name: landmark.imageName)

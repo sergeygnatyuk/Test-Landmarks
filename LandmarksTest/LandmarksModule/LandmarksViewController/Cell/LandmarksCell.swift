@@ -75,7 +75,7 @@ final class LandmarksCell: UITableViewCell {
         starLabel.isHidden = !isFavorite
     }
     
-    public func setup(with model: Landmarks) {
+    public func setup(with model: LandmarksModel) {
         titleLabel.text = model.name
         cellImageView.image = ImageStore.shared.image(name: model.imageName)
     }

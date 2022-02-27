@@ -3,8 +3,8 @@ import UIKit
 class LandmarksViewController: UITableViewController {
     
     // MARK: - Properties
-    var allLandmarks = [Landmarks]()
-    var favoriteLandmark = [Landmarks]()
+    var allLandmarks = [LandmarksModel]()
+    var favoriteLandmark = [LandmarksModel]()
     var router = LandmarksRouter()
     var showFavorite = false {
         didSet {
@@ -13,7 +13,7 @@ class LandmarksViewController: UITableViewController {
     }
     
     // MARK: - Dependencies
-    var selectedLandmark: Landmarks?
+    var selectedLandmark: LandmarksModel?
     internal var interactor: ILandmarksInteractor
     
     // MARK: - Initialization
@@ -95,7 +95,7 @@ class LandmarksViewController: UITableViewController {
                 selectedLandmark = allLandmarks[indexPath.row]
             }
             guard let selected = selectedLandmark else { return }
-            router.showDetailsScreen(for: selected)
+			router.showDetailsScreen(landmark: selected)
         }
     }
     

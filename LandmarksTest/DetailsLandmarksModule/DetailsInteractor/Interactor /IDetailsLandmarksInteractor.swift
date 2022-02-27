@@ -6,5 +6,5 @@ protocol IDetailsLandmarksInteractor {
     var presenter: IDetailsLandmarksPresenter { get set }
     
     // MARK: - Methods
-    func getData(forLandmark: Landmarks)
+    func getData(forLandmark: LandmarksModel)
 }

@@ -6,6 +6,6 @@ protocol IDetailsLandmarksPresenter: AnyObject {
     var view: IDetailsLandmarksView? { get set }
     
     // MARK: - Methods
-    func prepareViewModel(for landmark: Landmarks)
+    func prepareViewModel(for landmark: LandmarksModel)
 }
 
